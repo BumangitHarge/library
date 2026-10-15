@@ -1,31 +1,257 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin: 0;
+    margin-bottom: 60px;
+    background-color: #f5f6f8;
+    color: #252525;
+    font-family: Arial, sans-serif;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* =========================
+   NAVIGATION
+   ========================= */
+
+.navbar {
+    background-color: #102a43 !important;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: 700;
 }
+
+.navbar .nav-link {
+    color: #ffffff !important;
+}
+
+    .navbar .nav-link:hover {
+        color: #f2c94c !important;
+    }
+
+/* =========================
+   MAIN CONTENT
+   ========================= */
+
+main {
+    padding-top: 25px;
+}
+
+h1 {
+    color: #102a43;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h2,
+h3 {
+    color: #102a43;
+}
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.btn {
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #174a7e;
+    border-color: #174a7e;
+}
+
+    .btn-primary:hover {
+        background-color: #102a43;
+        border-color: #102a43;
+    }
+
+.btn-warning {
+    background-color: #f2c94c;
+    border-color: #f2c94c;
+    color: #102a43;
+    font-weight: 600;
+}
+
+    .btn-warning:hover {
+        background-color: #d9ad32;
+        border-color: #d9ad32;
+        color: #102a43;
+    }
+
+/* =========================
+   TABLES
+   ========================= */
+
+.table {
+    background-color: #ffffff;
+    border: 1px solid #d9dee5;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(16, 42, 67, 0.08);
+}
+
+    /* Table header */
+    .table thead th {
+        background-color: #102a43;
+        color: #ffffff;
+        border: none;
+        padding: 13px 12px;
+        font-weight: 600;
+    }
+
+    /* Table cells */
+    .table tbody td {
+        padding: 12px;
+        border-color: #e5e8ec;
+        vertical-align: middle;
+    }
+
+    /* Simple alternating rows */
+    .table tbody tr:nth-child(even) {
+        background-color: #f8f9fb;
+    }
+
+    .table tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    /* Simple hover */
+    .table tbody tr:hover {
+        background-color: #fff8df;
+    }
+
+    /* ID column */
+    .table tbody td:first-child {
+        font-weight: 600;
+        color: #102a43;
+    }
+
+    /* =========================
+   TABLE BUTTONS
+   ========================= */
+
+    .table .btn {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    .table .btn-outline-primary {
+        color: #174a7e;
+        border-color: #174a7e;
+    }
+
+        .table .btn-outline-primary:hover {
+            background-color: #174a7e;
+            color: #ffffff;
+        }
+
+    .table .btn-outline-danger {
+        color: #b83232;
+        border-color: #b83232;
+    }
+
+        .table .btn-outline-danger:hover {
+            background-color: #b83232;
+            color: #ffffff;
+        }
+
+/* =========================
+   CARDS
+   ========================= */
+
+.card {
+    border: 1px solid #d9dee5;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(16, 42, 67, 0.07);
+}
+
+.card-body {
+    padding: 22px;
+}
+
+/* =========================
+   FORMS
+   ========================= */
+
+.form-control,
+.form-select {
+    border: 1px solid #cbd2da;
+    border-radius: 6px;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #174a7e;
+        box-shadow: 0 0 0 0.15rem rgba(23, 74, 126, 0.15);
+    }
+
+.form-label {
+    color: #102a43;
+    font-weight: 600;
+}
+
+/* =========================
+   LINKS
+   ========================= */
+
+a {
+    color: #174a7e;
+}
+
+    a:hover {
+        color: #c49b24;
+    }
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    background-color: #ffffff;
+    color: #102a43;
+}
+
+    footer a {
+        color: #102a43;
+    }
+
+/* =========================
+   FOCUS
+   ========================= */
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    outline: none;
+}
+
+/* =========================
+   FORM FLOATING
+   ========================= */
+
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
