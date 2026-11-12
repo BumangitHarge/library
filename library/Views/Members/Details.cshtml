@@ -1,0 +1,78 @@
+﻿
+@model MemberDetails
+@{
+    ViewData["Title"] = Model.Member.FullName;
+}
+
+<div class="card border-0 shadow-sm mb-4" style="border-radius: 12px; overflow: hidden;">
+    <div class="card-body p-4" style="background-color: #10243e; color: white;">
+        <h1 class="mb-2 fw-bold" style="color: white;">@Model.Member.FullName</h1>
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+            <span class="badge rounded-pill px-3 py-2"
+                  style="background-color: #f5d76e; color: #10243e;">
+                @Model.Member.MemberType
+            </span>
+            <span style="color: #cbd5e1;">
+                @(Model.Member.Email ?? "no email")
+            </span>
+        </div>
+    </div>
+
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <h2 class="h5 fw-bold mb-0" style="color: #10243e;">Loan Records</h2>
+            <span class="badge rounded-pill px-3 py-2"
+                  style="background-color: #e8edf4; color: #10243e;">
+                @Model.Loans.Count total loans
+            </span>
+        </div>
+
+        @if (Model.Loans.Count == 0)
+        {
+            <div class="p-4 text-center rounded-3"
+                 style="background-color: #f4f6f9;">
+                <h5 class="fw-bold mb-2" style="color: #10243e;">No loan records yet</h5>
+                <p class="text-muted mb-0">
+                    This member has never borrowed a book.
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr style="background-color: #10243e; color: white;">
+                            <th class="py-3">Book</th>
+                            <th class="py-3">Loaned</th>
+                            <th class="py-3">Returned</th>
+                            <th class="py-3">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var loan in Model.Loans)
+                        {
+                            <tr>
+                                <td class="fw-semibold">@loan.BookTitle</td>
+                                <td>@(loan.LoanedOn.ToString("yyyy-MM-dd"))</td>
+                                <td>@(loan.ReturnedOn?.ToString("yyyy-MM-dd") ?? "—")</td>
+                                <td>
+                                    <span class="badge rounded-pill px-3 py-2
+                                        @(loan.Status == "Overdue" ? "text-bg-danger" : loan.Status == "Out" ? "text-dark" : "text-bg-success")"
+                                          style="@(loan.Status == "Out" ? "background-color: #f5d76e;" : "")">
+                                        @loan.Status
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+<a asp-action="Index" class="btn fw-semibold px-4"
+   style="background-color: #DC3545; color: white;">
+    Back to Members
+</a>

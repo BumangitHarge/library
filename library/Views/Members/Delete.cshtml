@@ -1,32 +1,59 @@
-﻿@model Member
+﻿
+@model Member
 @{
     ViewData["Title"] = "Delete Member";
 }
 
-<h1 class="mb-3">Delete Member</h1>
-@if (ViewBag.Error != null)
-{
-    <div class="alert alert-danger">@ViewBag.Error</div>
-}
+<div class="card border-0 shadow-sm mb-4"
+     style="border-radius: 12px; overflow: hidden; max-width: 36rem;">
 
-<div class="card card-body" style="max-width:36rem">
-    <p>Are you sure you want to delete this member?</p>
+    <div class="card-body p-4" style="background-color: #10243e; color: white;">
+        <h1 class="mb-1 fw-bold" style="color: white;">Delete Member</h1>
+        <p class="mb-0" style="color: #cbd5e1;">
+            Review the member information before confirming deletion.
+        </p>
+    </div>
 
-    <dl class="row">
-        <dt class="col-sm-4">Name</dt>
-        <dd class="col-sm-8">@Model.FullName</dd>
+    <div class="card-body p-4">
 
-        <dt class="col-sm-4">Email</dt>
-        <dd class="col-sm-8">@(Model.Email ?? "—")</dd>
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger mb-4">
+                <strong>Unable to delete member:</strong>
+                @ViewBag.Error
+            </div>
+        }
 
-        <dt class="col-sm-4">Type</dt>
-        <dd class="col-sm-8">@Model.MemberType</dd>
-    </dl>
+        <div class="alert alert-danger">
+            <strong>Warning!</strong> Are you sure you want to delete this member?
+            This action cannot be undone.
+        </div>
 
-    <form asp-action="Delete" method="post">
-        <input asp-for="MemberId" type="hidden" />
+        <dl class="row mb-4">
+            <dt class="col-sm-4" style="color: #10243e;">Name</dt>
+            <dd class="col-sm-8 fw-semibold">@Model.FullName</dd>
 
-        <button type="submit" class="btn btn-danger">Delete</button>
-        <a asp-action="Index" class="btn btn-link">Cancel</a>
-    </form>
+            <dt class="col-sm-4" style="color: #10243e;">Email</dt>
+            <dd class="col-sm-8">@(Model.Email ?? "—")</dd>
+
+            <dt class="col-sm-4" style="color: #10243e;">Type</dt>
+            <dd class="col-sm-8">@Model.MemberType</dd>
+        </dl>
+
+        <form asp-action="Delete" method="post">
+            <input asp-for="MemberId" type="hidden" />
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn fw-semibold px-4"
+                        style="background-color: #DC3545; color: white;">
+                    Delete Member
+                </button>
+
+                <a asp-action="Index" class="btn fw-semibold px-4"
+                   style="background-color: #f5d76e; color: #10243e;">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
