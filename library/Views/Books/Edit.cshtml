@@ -1,42 +1,65 @@
-﻿@model Book
+﻿
+@model Book
 @{
     ViewData["Title"] = "Edit a book";
 }
- 
-<h1 class="mb-3">Edit a book</h1>
- 
-<form asp-action="Edit" method="post" class="card card-body" style="max-width:36rem">
-    <input type="hidden" asp-for="BookId" />
- 
-    <div class="mb-3">
-        <label asp-for="Title" class="form-label"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+
+<div class="card border-0 shadow-sm mb-4"
+     style="border-radius: 12px; overflow: hidden; max-width: 36rem;">
+
+    <div class="card-body p-4" style="background-color: #10243e; color: white;">
+        <h1 class="mb-1 fw-bold" style="color: white;">Edit a Book</h1>
+        <p class="mb-0" style="color: #cbd5e1;">
+            Update the book's information below.
+        </p>
     </div>
- 
-    <div class="mb-3">
-        <label asp-for="Category" class="form-label"></label>
-        <select asp-for="Category" class="form-select">
-            <option value="">(none)</option>
-            <option>Classic</option>
-            <option>Fiction</option>
-            <option>Poetry</option>
-            <option>Reference</option>
-            <option>Textbook</option>
-        </select>
+
+    <div class="card-body p-4">
+        <form asp-action="Edit" method="post">
+
+            <input type="hidden" asp-for="BookId" />
+
+            <div class="mb-4">
+                <label asp-for="Title" class="form-label fw-semibold"
+                       style="color: #10243e;"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Category" class="form-label fw-semibold"
+                       style="color: #10243e;"></label>
+                <select asp-for="Category" class="form-select">
+                    <option value="">(none)</option>
+                    <option>Classic</option>
+                    <option>Fiction</option>
+                    <option>Poetry</option>
+                    <option>Reference</option>
+                    <option>Textbook</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Price" class="form-label fw-semibold"
+                       style="color: #10243e;"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger small"></span>
+            </div>
+
+            <div class="d-flex gap-2 pt-2">
+                <button type="submit" class="btn fw-semibold px-4"
+                        style="background-color: #10243e; color: white;">
+                    Save Changes
+                </button>
+
+                <a asp-action="Index" class="btn fw-semibold px-4"
+                   style="background-color: #DC3545; color: white;">
+                    Cancel
+                </a>
+            </div>
+        </form>
     </div>
- 
-    <div class="mb-3">
-        <label asp-for="Price" class="form-label"></label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
- 
-    <div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a asp-action="Index" class="btn btn-link">Cancel</a>
-    </div>
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
